@@ -81,7 +81,7 @@ public abstract class OysterEntity extends Animal implements Bucketable {
 	}
 
 	private void touch(Mob mob) {
-		if (mob.hurt(DamageSource.mobAttack(this), 2.0F)) {
+		if (mob.hurt(this.damageSources().mobAttack(this), 2.0F)) {
 			this.playSound(OWSounds.OYSTER_ATTACK);
 		}
 	}
@@ -89,7 +89,7 @@ public abstract class OysterEntity extends Animal implements Bucketable {
 	@Override
 	public void playerTouch(Player player) {
 		if (this.isAlive() && this.openShellRemainTicks == 1) {
-			if (player instanceof ServerPlayer && player.hurt(DamageSource.mobAttack(this), 2.0F)) {
+			if (player instanceof ServerPlayer && player.hurt(this.damageSources().mobAttack(this), 2.0F)) {
 				this.playSound(OWSounds.OYSTER_ATTACK);
 			}
 		}
@@ -201,7 +201,7 @@ public abstract class OysterEntity extends Animal implements Bucketable {
 			this.setAirSupply(airSupply - 1);
 			if (this.getAirSupply() == -40) {
 				this.setAirSupply(0);
-				this.hurt(DamageSource.DRY_OUT, 1.0F);
+				this.hurt(this.damageSources().dryOut(), 1.0F);
 			}
 		} else {
 			this.setAirSupply(this.getMaxAirSupply());

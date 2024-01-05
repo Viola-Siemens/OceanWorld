@@ -38,7 +38,7 @@ public class UnderwaterJigsawStructureFeature extends Structure {
 				case BURY, BEARD_THIN, BEARD_BOX -> 12;
 			};
 			return feature.maxDistanceFromCenter + adaptation > MAX_TOTAL_STRUCTURE_RANGE ?
-					DataResult.error("Structure size including terrain adaptation must not exceed %d".formatted(MAX_TOTAL_STRUCTURE_RANGE)) :
+					DataResult.error(() -> "Structure size including terrain adaptation must not exceed %d".formatted(MAX_TOTAL_STRUCTURE_RANGE)) :
 					DataResult.success(feature);
 		};
 	}

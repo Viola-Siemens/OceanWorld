@@ -67,7 +67,7 @@ public class DripIceEntity extends AbstractArrow {
 		Entity entity = hit.getEntity();
 
 		Entity owner = this.getOwner();
-		DamageSource damagesource = DamageSource.arrow(this, owner == null ? this : owner);
+		DamageSource damagesource = this.damageSources().arrow(this, owner == null ? this : owner);
 		SoundEvent soundevent = SoundEvents.GLASS_BREAK;
 		if (entity.hurt(damagesource, 1.0F)) {
 			if (entity.getType() == EntityType.ENDERMAN) {

@@ -1,6 +1,6 @@
 modLoader="javafml"
-loaderVersion="[44,)"
-license="All rights reserved"
+loaderVersion="[45,)"
+license="MIT"
 issueTrackerURL="https://github.com/Viola-Siemens/OceanWorld/issues"
 
 [[mods]]
@@ -26,14 +26,14 @@ Coded by Liu Dongyu (a.k.a. Viola_Siemens).
 [[dependencies.oceanworld]]
     modId="forge"
     mandatory=true
-    versionRange="[44,)"
+    versionRange="[45,)"
     ordering="NONE"
     side="BOTH"
     
 [[dependencies.oceanworld]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.3,1.20)"
+    versionRange="[1.19.4,1.20)"
     ordering="NONE"
     side="BOTH"
 

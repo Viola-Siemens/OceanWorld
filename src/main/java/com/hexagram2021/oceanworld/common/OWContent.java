@@ -21,7 +21,7 @@ public class OWContent {
 	public static void modConstruction(IEventBus bus, @SuppressWarnings("unused") Consumer<Runnable> runLater) {
 		ModsLoadedHelper.compatModLoaded();
 
-		OWMultiNoiseBiomeSourcePresets.init();
+		OWMultiNoiseBiomeSourceParameterListPresets.init();
 
 		OWBlocks.init(bus);
 		OWItems.init(bus);

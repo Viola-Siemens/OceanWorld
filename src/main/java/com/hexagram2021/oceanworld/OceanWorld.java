@@ -85,7 +85,7 @@ public class OceanWorld {
 		ITEM_GROUP =  event.registerCreativeModeTab(new ResourceLocation(MODID, "building_blocks"), builder -> builder
 				.icon(() -> new ItemStack(OWBlocks.TO_STAIRS.get(new ResourceLocation(MODID, "polished_serpentine"))))
 				.title(Component.translatable("itemGroup.oceanworld")).displayItems(
-						(flags, output, hasPermission) -> OWItems.ItemEntry.ALL_ITEMS.forEach(output::accept)
+						(flags, output) -> OWItems.ItemEntry.ALL_ITEMS.forEach(output::accept)
 				));
 	}
 }
