@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "oceanworld:smooth_conglomerate"
+    }
+  },
+  "result": {
+    "item": "oceanworld:smooth_conglomerate_slab",
+    "count": 6
+  }
+}

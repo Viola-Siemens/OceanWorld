@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "oceanworld:black_bricks"
+    }
+  },
+  "result": {
+    "item": "oceanworld:black_brick_slab",
+    "count": 6
+  }
+}

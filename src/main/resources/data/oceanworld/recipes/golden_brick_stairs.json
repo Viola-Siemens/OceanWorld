@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "oceanworld:golden_bricks"
+    }
+  },
+  "result": {
+    "item": "oceanworld:golden_brick_stairs",
+    "count": 4
+  }
+}

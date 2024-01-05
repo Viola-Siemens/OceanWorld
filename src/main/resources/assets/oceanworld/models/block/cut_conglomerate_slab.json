@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "oceanworld:block/conglomerate_top",
+    "top": "oceanworld:block/conglomerate_top",
+    "side": "oceanworld:block/cut_conglomerate"
+  }
+}

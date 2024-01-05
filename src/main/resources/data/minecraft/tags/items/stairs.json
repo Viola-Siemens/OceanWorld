@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "oceanworld:peridotite_stairs",
+    "oceanworld:polished_peridotite_stairs",
+    "oceanworld:serpentine_stairs",
+    "oceanworld:polished_serpentine_stairs",
+    "oceanworld:black_brick_stairs",
+    "oceanworld:golden_brick_stairs",
+    "oceanworld:conglomerate_stairs",
+    "oceanworld:smooth_conglomerate_stairs",
+    "oceanworld:basalt_sandstone_stairs",
+    "oceanworld:smooth_basalt_sandstone_stairs"
+  ]
+}

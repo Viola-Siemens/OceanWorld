@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "oceanworld:smooth_conglomerate"
+  },
+  "result": "oceanworld:smooth_conglomerate_stairs",
+  "count": 1
+}

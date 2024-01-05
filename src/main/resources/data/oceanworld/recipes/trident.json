@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    " H ",
+	" D "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_sword"
+    },
+    "H": {
+      "item": "minecraft:heart_of_the_sea"
+    },
+    "D": {
+      "item": "minecraft:diamond_block"
+    }
+  },
+  "result": {
+    "item": "minecraft:trident"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "oceanworld:cut_conglomerate"
+  },
+  "result": "oceanworld:cut_conglomerate_slab",
+  "count": 2
+}

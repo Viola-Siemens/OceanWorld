@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "oceanworld:block/golden_bricks",
+    "top": "oceanworld:block/golden_bricks",
+    "side": "oceanworld:block/golden_bricks"
+  }
+}

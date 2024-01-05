@@ -1,0 +1,9 @@
+{
+  "processors": [
+    {
+      "processor_type": "oceanworld:aristocrats_residence",
+      "replace_possibility": 0.2,
+      "treasure_possibility": 0.15
+    }
+  ]
+}

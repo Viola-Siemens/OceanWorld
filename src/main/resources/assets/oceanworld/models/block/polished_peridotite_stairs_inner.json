@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "oceanworld:block/polished_peridotite",
+    "top": "oceanworld:block/polished_peridotite",
+    "side": "oceanworld:block/polished_peridotite"
+  }
+}

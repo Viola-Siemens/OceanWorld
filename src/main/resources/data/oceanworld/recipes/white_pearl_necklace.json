@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "oceanworld:white_pearl"
+    },
+    "X": {
+      "tag": "forge:string"
+    }
+  },
+  "result": {
+    "item": "oceanworld:white_pearl_necklace"
+  }
+}

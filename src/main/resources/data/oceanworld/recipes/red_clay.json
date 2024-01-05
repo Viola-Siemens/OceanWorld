@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "oceanworld:red_clay_ball"
+    }
+  },
+  "result": {
+    "item": "oceanworld:red_clay"
+  }
+}

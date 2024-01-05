@@ -1,0 +1,19 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "chunk_count": 12,
+      "other_set": "minecraft:villages"
+    },
+    "spacing": 40,
+    "separation": 10,
+    "salt": 2022070885,
+    "spread_type": "linear"
+  },
+  "structures": [
+    {
+      "structure": "oceanworld:oceanologer_ship",
+      "weight": 1
+    }
+  ]
+}

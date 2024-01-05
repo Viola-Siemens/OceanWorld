@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "oceanworld:block/cut_conglomerate_slab"
+    },
+    "type=double": {
+      "model": "oceanworld:block/cut_conglomerate"
+    },
+    "type=top": {
+      "model": "oceanworld:block/cut_conglomerate_slab_top"
+    }
+  }
+}

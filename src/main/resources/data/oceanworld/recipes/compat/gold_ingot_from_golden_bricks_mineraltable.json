@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "emeraldcraft"
+    }
+  ],
+  "type": "emeraldcraft:mineral_table",
+  "ingredient": {
+    "item": "oceanworld:golden_bricks"
+  },
+  "result": "minecraft:gold_ingot",
+  "experience": 0.1,
+  "cookingtime": 500
+}

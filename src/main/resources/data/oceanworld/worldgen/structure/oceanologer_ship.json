@@ -1,0 +1,19 @@
+{
+  "type": "oceanworld:oceanologer_ship",
+  "biomes": "#oceanworld:has_structure/oceanologer_ship",
+  "spawn_overrides": {
+    "monster": {
+      "bounding_box": "full",
+      "spawns": [
+        {
+          "type": "oceanworld:oceanologer",
+          "maxCount": 1,
+          "minCount": 1,
+          "weight": 10
+        }
+      ]
+    }
+  },
+  "step": "surface_structures",
+  "terrain_adaptation": "none"
+}

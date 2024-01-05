@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 50,
+    "separation": 15,
+    "salt": 2022061516,
+    "spread_type": "linear"
+  },
+  "structures": [
+    {
+      "structure": "oceanworld:aristocrats_residence",
+      "weight": 1
+    }
+  ]
+}

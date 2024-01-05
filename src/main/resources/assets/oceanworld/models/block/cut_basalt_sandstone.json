@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "oceanworld:block/basalt_sandstone_top",
+    "side": "oceanworld:block/cut_basalt_sandstone"
+  }
+}

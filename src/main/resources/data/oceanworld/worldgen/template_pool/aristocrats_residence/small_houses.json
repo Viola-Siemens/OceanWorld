@@ -1,0 +1,77 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "oceanworld:aristocrats_residence/aristocrats_arsenal",
+        "processors": "oceanworld:aristocrats_residence",
+        "projection": "rigid"
+      },
+      "weight": 7
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "oceanworld:aristocrats_residence/aristocrats_buried",
+        "processors": "oceanworld:aristocrats_residence",
+        "projection": "rigid"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "oceanworld:aristocrats_residence/aristocrats_decoration",
+        "processors": "oceanworld:aristocrats_residence",
+        "projection": "rigid"
+      },
+      "weight": 8
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "oceanworld:aristocrats_residence/aristocrats_portal",
+        "processors": "oceanworld:aristocrats_residence",
+        "projection": "rigid"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "oceanworld:aristocrats_residence/aristocrats_treasure",
+        "processors": "oceanworld:aristocrats_residence",
+        "projection": "rigid"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "oceanworld:aristocrats_residence/aristocrats_well",
+        "processors": "oceanworld:aristocrats_residence",
+        "projection": "rigid"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "oceanworld:aristocrats_residence/aristocrats_lounge1",
+        "processors": "oceanworld:aristocrats_residence",
+        "projection": "rigid"
+      },
+      "weight": 15
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "oceanworld:aristocrats_residence/aristocrats_lounge2",
+        "processors": "oceanworld:aristocrats_residence",
+        "projection": "rigid"
+      },
+      "weight": 14
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

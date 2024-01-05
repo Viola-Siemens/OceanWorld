@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "oceanworld:block/smooth_basalt_sandstone_slab"
+    },
+    "type=double": {
+      "model": "oceanworld:block/smooth_basalt_sandstone"
+    },
+    "type=top": {
+      "model": "oceanworld:block/smooth_basalt_sandstone_slab_top"
+    }
+  }
+}

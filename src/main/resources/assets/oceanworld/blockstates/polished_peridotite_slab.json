@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "oceanworld:block/polished_peridotite_slab"
+    },
+    "type=double": {
+      "model": "oceanworld:block/polished_peridotite"
+    },
+    "type=top": {
+      "model": "oceanworld:block/polished_peridotite_slab_top"
+    }
+  }
+}

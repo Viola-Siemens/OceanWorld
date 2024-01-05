@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "emeraldcraft"
+    }
+  ],
+  "type": "emeraldcraft:glass_kiln",
+  "ingredient": {
+    "item": "oceanworld:red_clay_ball"
+  },
+  "result": "oceanworld:black_brick",
+  "experience": 0.3,
+  "cookingtime": 100
+}

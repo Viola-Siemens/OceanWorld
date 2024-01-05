@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "G#",
+    "#G"
+  ],
+  "key": {
+    "#": {
+      "item": "oceanworld:black_brick"
+    },
+    "G": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "item": "oceanworld:golden_brick"
+  }
+}

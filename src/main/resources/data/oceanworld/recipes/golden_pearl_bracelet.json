@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "oceanworld:golden_pearl"
+    },
+    "X": {
+      "tag": "forge:string"
+    }
+  },
+  "result": {
+    "item": "oceanworld:golden_pearl_bracelet"
+  }
+}

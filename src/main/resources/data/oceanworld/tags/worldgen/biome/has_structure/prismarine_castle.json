@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:is_deep_ocean",
+    "#oceanworld:is_ocean_not_polluted"
+  ]
+}

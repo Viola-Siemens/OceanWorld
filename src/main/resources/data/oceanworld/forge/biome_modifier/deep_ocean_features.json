@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_deep_ocean",
+  "features": [
+    "oceanworld:peridotite_feature",
+    "oceanworld:serpentine_feature",
+    "oceanworld:red_clay_feature"
+  ],
+  "step": "surface_structures"
+}

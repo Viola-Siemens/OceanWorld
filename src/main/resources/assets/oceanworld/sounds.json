@@ -1,0 +1,118 @@
+{
+  "sea_cucumber.ambient": {
+    "category": "entity",
+    "sounds": [
+      "oceanworld:sea_cucumber/move"
+    ],
+    "subtitle": "subtitles.entity.sea_cucumber.ambient"
+  },
+  "sea_cucumber.death": {
+    "category": "entity",
+    "sounds": [
+      "oceanworld:sea_cucumber/death"
+    ],
+    "subtitle": "subtitles.entity.sea_cucumber.death"
+  },
+  "sea_cucumber.hurt": {
+    "category": "entity",
+    "sounds": [
+      "oceanworld:sea_cucumber/hurt"
+    ],
+    "subtitle": "subtitles.entity.sea_cucumber.hurt"
+  },
+  "oyster.ambient": {
+    "category": "entity",
+    "sounds": [
+      "oceanworld:oyster/ambient1",
+      "oceanworld:oyster/ambient2"
+    ],
+    "subtitle": "subtitles.entity.oyster.ambient"
+  },
+  "oyster.attack": {
+    "category": "entity",
+    "sounds": [
+      "oceanworld:oyster/attack1",
+      "oceanworld:oyster/attack2"
+    ],
+    "subtitle": "subtitles.entity.oyster.attack"
+  },
+  "oyster.death": {
+    "category": "entity",
+    "sounds": [
+      "oceanworld:oyster/death"
+    ],
+    "subtitle": "subtitles.entity.oyster.death"
+  },
+  "oyster.hurt": {
+    "category": "entity",
+    "sounds": [
+      "oceanworld:oyster/hurt"
+    ],
+    "subtitle": "subtitles.entity.oyster.hurt"
+  },
+  "item.bucket.fill_oyster": {
+    "sounds": [
+      "minecraft:item/bucket/fill_fish1",
+      "minecraft:item/bucket/fill_fish2",
+      "minecraft:item/bucket/fill_fish3"
+    ],
+    "subtitle": "subtitles.item.bucket.fill_oyster"
+  },
+  "oceanologer.ambient": {
+    "category": "hostile",
+    "sounds": [
+      "oceanworld:oceanologer/ambient"
+    ],
+    "subtitle": "subtitles.entity.oceanologer.ambient"
+  },
+  "oceanologer.cast_spell": {
+    "category": "hostile",
+    "sounds": [
+      "oceanworld:oceanologer/cast_spell1",
+      "oceanworld:oceanologer/cast_spell2"
+    ],
+    "subtitle": "subtitles.entity.oceanologer.cast_spell"
+  },
+  "oceanologer.celebrate": {
+    "category": "hostile",
+    "sounds": [
+      "oceanworld:oceanologer/celebrate"
+    ],
+    "subtitle": "subtitles.entity.oceanologer.celebrate"
+  },
+  "oceanologer.death": {
+    "category": "hostile",
+    "sounds": [
+      "oceanworld:oceanologer/death"
+    ],
+    "subtitle": "subtitles.entity.oceanologer.death"
+  },
+  "oceanologer.hurt": {
+    "category": "hostile",
+    "sounds": [
+      "oceanworld:oceanologer/hurt"
+    ],
+    "subtitle": "subtitles.entity.oceanologer.hurt"
+  },
+  "oceanologer.prepare_drip_ice": {
+    "category": "hostile",
+    "sounds": [
+      "oceanworld:oceanologer/prepare_drip_ice"
+    ],
+    "subtitle": "subtitles.entity.oceanologer.prepare_drip_ice"
+  },
+  "oceanologer.prepare_trap": {
+    "category": "hostile",
+    "sounds": [
+      "oceanworld:oceanologer/prepare_trap"
+    ],
+    "subtitle": "subtitles.entity.oceanologer.prepare_trap"
+  },
+  "oceanologer.prepare_wololo": {
+    "category": "hostile",
+    "sounds": [
+      "oceanworld:oceanologer/prepare_wololo"
+    ],
+    "subtitle": "subtitles.entity.oceanologer.prepare_wololo"
+  }
+}

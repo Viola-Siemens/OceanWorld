@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "oceanworld:red_clay_ball"
+  },
+  "result": "oceanworld:black_brick",
+  "experience": 0.3,
+  "cookingtime": 200
+}

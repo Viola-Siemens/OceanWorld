@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "oceanworld:polished_serpentine"
+    }
+  },
+  "result": {
+    "item": "oceanworld:polished_serpentine_stairs",
+    "count": 4
+  }
+}

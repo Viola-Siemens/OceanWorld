@@ -1,0 +1,13 @@
+{
+  "type": "oceanworld:ocean_stone_feature",
+  "config": {
+    "target_block": [
+      "minecraft:gravel",
+      "minecraft:stone",
+      "minecraft:andesite",
+      "minecraft:diorite",
+      "minecraft:granite"
+    ],
+	"replace_block": "oceanworld:serpentine"
+  }
+}

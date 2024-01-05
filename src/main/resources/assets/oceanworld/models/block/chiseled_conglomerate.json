@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "oceanworld:block/conglomerate_top",
+    "side": "oceanworld:block/chiseled_conglomerate"
+  }
+}

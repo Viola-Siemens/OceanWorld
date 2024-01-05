@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "emeraldcraft"
+    }
+  ],
+  "type": "emeraldcraft:glass_kiln",
+  "ingredient": {
+    "item": "oceanworld:red_clay"
+  },
+  "result": "minecraft:terracotta",
+  "experience": 0.35,
+  "cookingtime": 100
+}

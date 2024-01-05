@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": [
+      {
+        "item": "oceanworld:conglomerate"
+      },
+      {
+        "item": "oceanworld:chiseled_conglomerate"
+      },
+      {
+        "item": "oceanworld:cut_conglomerate"
+      }
+    ]
+  },
+  "result": {
+    "item": "oceanworld:conglomerate_stairs",
+    "count": 4
+  }
+}

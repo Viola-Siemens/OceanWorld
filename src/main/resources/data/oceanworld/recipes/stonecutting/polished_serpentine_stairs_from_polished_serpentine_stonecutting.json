@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "oceanworld:polished_serpentine"
+  },
+  "result": "oceanworld:polished_serpentine_stairs",
+  "count": 1
+}

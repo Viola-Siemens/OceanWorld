@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "oceanworld:cut_basalt_sandstone"
+  },
+  "result": "oceanworld:cut_basalt_sandstone_slab",
+  "count": 2
+}

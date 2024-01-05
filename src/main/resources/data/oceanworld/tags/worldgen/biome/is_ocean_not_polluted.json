@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "oceanworld:coral_ocean",
+    "oceanworld:deposit_ocean",
+    "oceanworld:glacier",
+    "oceanworld:icy_ocean",
+    "oceanworld:ocean",
+    "oceanworld:reef_ocean",
+    "oceanworld:seagrass_meadow",
+    "oceanworld:volcanic_ocean"
+  ]
+}

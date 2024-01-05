@@ -1,0 +1,39 @@
+modLoader="javafml"
+loaderVersion="[44,)"
+license="All rights reserved"
+issueTrackerURL="https://github.com/Viola-Siemens/OceanWorld/issues"
+
+[[mods]]
+modId="oceanworld"
+version="${file.jarVersion}"
+displayName="Ocean World"
+logoFile="logo.png"
+credits="Liu Dongyu"
+authors="Hexagram"
+
+description='''
+With COVID-2019, El Niño phenomenon, innumerable earthquake, volcanic eruption and especially sea level rise caused by global warming engulfing minecraft, the world generation has changed a lot.
+
+With this mod, you can hardly find landmasses, but island and endless ocean, and even difficult to contact your friends and meet them.
+
+But luckily, you can find a lot of monuments (not only ocean monuments) in ocean or deep ocean biomes instead, and can even find other illagers who are also raid captains and trigger raids.
+
+Can you still beat the game and survive?
+
+Coded by Liu Dongyu (a.k.a. Viola_Siemens).
+'''
+
+[[dependencies.oceanworld]]
+    modId="forge"
+    mandatory=true
+    versionRange="[44,)"
+    ordering="NONE"
+    side="BOTH"
+    
+[[dependencies.oceanworld]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.3,1.20)"
+    ordering="NONE"
+    side="BOTH"
+

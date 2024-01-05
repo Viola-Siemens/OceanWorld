@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#oceanworld:is_ocean_not_polluted",
+    "oceanworld:polluted_ocean"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "oceanworld:peridotite"
+    }
+  },
+  "result": {
+    "item": "oceanworld:polished_peridotite",
+    "count": 4
+  }
+}

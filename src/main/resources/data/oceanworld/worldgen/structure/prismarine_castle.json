@@ -1,0 +1,7 @@
+{
+  "type": "oceanworld:prismarine_castle",
+  "biomes": "#oceanworld:has_structure/prismarine_castle",
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin"
+}

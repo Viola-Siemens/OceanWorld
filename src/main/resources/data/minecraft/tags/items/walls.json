@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "oceanworld:peridotite_wall",
+    "oceanworld:serpentine_wall",
+    "oceanworld:black_brick_wall",
+    "oceanworld:golden_brick_wall",
+    "oceanworld:conglomerate_wall",
+    "oceanworld:basalt_sandstone_wall"
+  ]
+}

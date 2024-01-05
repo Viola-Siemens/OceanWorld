@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "oceanworld:polished_peridotite"
+  },
+  "result": "oceanworld:polished_peridotite_stairs",
+  "count": 1
+}

@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "oceanworld:block/basalt_sand"
+      },
+      {
+        "model": "oceanworld:block/basalt_sand",
+        "y": 90
+      },
+      {
+        "model": "oceanworld:block/basalt_sand",
+        "y": 180
+      },
+      {
+        "model": "oceanworld:block/basalt_sand",
+        "y": 270
+      }
+    ]
+  }
+}

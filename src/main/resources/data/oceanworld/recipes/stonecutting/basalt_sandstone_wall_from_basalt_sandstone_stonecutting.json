@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "oceanworld:basalt_sandstone"
+  },
+  "result": "oceanworld:basalt_sandstone_wall",
+  "count": 1
+}

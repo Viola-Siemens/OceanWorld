@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "oceanworld:block/black_bricks",
+    "top": "oceanworld:block/black_bricks",
+    "side": "oceanworld:block/black_bricks"
+  }
+}

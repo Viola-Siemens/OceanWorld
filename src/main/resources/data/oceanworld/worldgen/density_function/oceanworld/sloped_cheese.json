@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:mul",
+    "argument1": 4.0,
+    "argument2": {
+      "type": "minecraft:quarter_negative",
+      "argument": {
+        "type": "minecraft:mul",
+        "argument1": "oceanworld:oceanworld/depth",
+        "argument2": "oceanworld:oceanworld/factor"
+      }
+    }
+  },
+  "argument2": "oceanworld:oceanworld/base_3d_noise"
+}

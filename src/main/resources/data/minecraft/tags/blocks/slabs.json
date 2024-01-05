@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "oceanworld:peridotite_slab",
+    "oceanworld:polished_peridotite_slab",
+    "oceanworld:serpentine_slab",
+    "oceanworld:polished_serpentine_slab",
+    "oceanworld:black_brick_slab",
+    "oceanworld:golden_brick_slab",
+    "oceanworld:cut_conglomerate_slab",
+    "oceanworld:conglomerate_slab",
+    "oceanworld:smooth_conglomerate_slab",
+    "oceanworld:basalt_sandstone_slab",
+    "oceanworld:smooth_basalt_sandstone_slab",
+    "oceanworld:cut_basalt_sandstone_slab"
+  ]
+}

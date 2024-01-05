@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "oceanworld:smooth_basalt_sandstone"
+  },
+  "result": "oceanworld:smooth_basalt_sandstone_stairs",
+  "count": 1
+}

@@ -1,0 +1,11 @@
+{
+  "type": "oceanworld:oceanworld",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "preset": "oceanworld:oceanworld"
+    },
+    "settings": "oceanworld:oceanworld"
+  }
+}

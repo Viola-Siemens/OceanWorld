@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "oceanworld:block/polished_serpentine_slab"
+    },
+    "type=double": {
+      "model": "oceanworld:block/polished_serpentine"
+    },
+    "type=top": {
+      "model": "oceanworld:block/polished_serpentine_slab_top"
+    }
+  }
+}

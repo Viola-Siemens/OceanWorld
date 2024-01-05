@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "oceanworld:smooth_basalt_sandstone"
+    }
+  },
+  "result": {
+    "item": "oceanworld:smooth_basalt_sandstone_stairs",
+    "count": 4
+  }
+}
