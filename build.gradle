@@ -113,6 +113,7 @@ dependencies {
 	compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.4-5.1.5.4")
     runtimeOnly fg.deobf("mezz.jei:jei-1.19.4-forge:13.1.0.15")
     runtimeOnly fg.deobf("curse.maven:jade-324717:4573063")
+    runtimeOnly fg.deobf("curse.maven:custom_world_generation-913105:4809360")
 }
 
 jar {

@@ -30,5 +30,6 @@ public final class OWMultiNoiseBiomeSourceParameterListPresets {
 	}
 
 	public static void init() {
+		MultiNoiseBiomeSourceParameterList.Preset.BY_NAME.put(OCEANWORLD.id(), OCEANWORLD);
 	}
 }
