@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "oceanworld:sea_cucumber"
+    "oceanworld:sea_cucumber",
+    "oceanworld:oyster_meat",
+    "oceanworld:cooked_oyster_meat"
   ]
 }

@@ -8,9 +8,9 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.SlabType;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -82,20 +82,30 @@ public class OWBlocks {
 	}
 
 	public static final class StoneDecoration {
-		public static final Supplier<BlockBehaviour.Properties> STONE_PROPERTIES = () -> BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE)
+		public static final Supplier<BlockBehaviour.Properties> STONE_PROPERTIES = () -> BlockBehaviour.Properties.of()
+				.mapColor(MapColor.STONE)
+				.instrument(NoteBlockInstrument.BASEDRUM)
 				.requiresCorrectToolForDrops()
 				.strength(1.5F, 6.0F);
-		public static final Supplier<BlockBehaviour.Properties> CONGLOMERATE_PROPERTIES = () -> BlockBehaviour.Properties.of(Material.STONE)
+		public static final Supplier<BlockBehaviour.Properties> CONGLOMERATE_PROPERTIES = () -> BlockBehaviour.Properties.of()
+				.mapColor(MapColor.STONE)
+				.instrument(NoteBlockInstrument.BASEDRUM)
 				.requiresCorrectToolForDrops()
 				.strength(0.8F);
-		public static final Supplier<BlockBehaviour.Properties> SMOOTH_CONGLOMERATE_PROPERTIES = () -> BlockBehaviour.Properties.of(Material.STONE)
+		public static final Supplier<BlockBehaviour.Properties> SMOOTH_CONGLOMERATE_PROPERTIES = () -> BlockBehaviour.Properties.of()
+				.mapColor(MapColor.STONE)
+				.instrument(NoteBlockInstrument.BASEDRUM)
 				.requiresCorrectToolForDrops()
 				.strength(2.0F, 6.0F);
 		public static final Supplier<BlockBehaviour.Properties> BASALT_SAND_PROPERTIES = () ->
-				BlockBehaviour.Properties.of(Material.SAND, MaterialColor.TERRACOTTA_GRAY)
+				BlockBehaviour.Properties.of()
+						.mapColor(MapColor.TERRACOTTA_GRAY)
+						.instrument(NoteBlockInstrument.SNARE)
 						.strength(0.5F).sound(SoundType.SAND);
 		public static final Supplier<BlockBehaviour.Properties> BASALT_SANDSTONE_PROPERTIES = () ->
-				BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_GRAY)
+				BlockBehaviour.Properties.of()
+						.mapColor(MapColor.TERRACOTTA_GRAY)
+						.instrument(NoteBlockInstrument.BASEDRUM)
 						.requiresCorrectToolForDrops().strength(0.8F);
 
 
@@ -187,9 +197,18 @@ public class OWBlocks {
 	}
 
 	public static final class BrickDecoration {
-		public static final Supplier<BlockBehaviour.Properties> CLAY_PROPERTIES = () -> BlockBehaviour.Properties.of(Material.CLAY)
+		public static final Supplier<BlockBehaviour.Properties> CLAY_PROPERTIES = () -> BlockBehaviour.Properties.of()
+				.mapColor(MapColor.COLOR_RED)
+				.instrument(NoteBlockInstrument.FLUTE)
 				.strength(0.6F).sound(SoundType.GRAVEL);
-		public static final Supplier<BlockBehaviour.Properties> BRICK_PROPERTIES = () -> BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED)
+		public static final Supplier<BlockBehaviour.Properties> BLACK_BRICK_PROPERTIES = () -> BlockBehaviour.Properties.of()
+				.mapColor(MapColor.TERRACOTTA_CYAN)
+				.instrument(NoteBlockInstrument.BASEDRUM)
+				.requiresCorrectToolForDrops()
+				.strength(2.0F, 6.0F);
+		public static final Supplier<BlockBehaviour.Properties> GOLDEN_BRICK_PROPERTIES = () -> BlockBehaviour.Properties.of()
+				.mapColor(MapColor.GOLD)
+				.instrument(NoteBlockInstrument.BASEDRUM)
 				.requiresCorrectToolForDrops()
 				.strength(2.0F, 6.0F);
 
@@ -197,10 +216,10 @@ public class OWBlocks {
 				"red_clay", CLAY_PROPERTIES, Block::new
 		);
 		public static final BlockEntry<Block> BLACK_BRICKS = new BlockEntry<>(
-				"black_bricks", BRICK_PROPERTIES, Block::new
+				"black_bricks", BLACK_BRICK_PROPERTIES, Block::new
 		);
 		public static final BlockEntry<Block> GOLDEN_BRICKS = new BlockEntry<>(
-				"golden_bricks", BRICK_PROPERTIES, Block::new
+				"golden_bricks", GOLDEN_BRICK_PROPERTIES, Block::new
 		);
 
 
@@ -220,7 +239,7 @@ public class OWBlocks {
 
 	public static final class IceDecoration {
 		public static final Supplier<BlockBehaviour.Properties> FAKE_FROSTED_ICE_PROPERTIES = () ->
-				BlockBehaviour.Properties.of(Material.ICE).friction(0.98F).randomTicks().strength(0.5F).sound(SoundType.GLASS).noOcclusion();
+				BlockBehaviour.Properties.of().mapColor(MapColor.ICE).friction(0.98F).randomTicks().strength(0.5F).sound(SoundType.GLASS).noOcclusion();
 
 		public static final BlockEntry<FakeFrostedIceBlock> FAKE_FROSTED_ICE = new BlockEntry<>(
 				"fake_frosted_ice", FAKE_FROSTED_ICE_PROPERTIES, FakeFrostedIceBlock::new

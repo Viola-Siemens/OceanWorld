@@ -98,9 +98,9 @@ public class OceanJigsawPlacement {
 		Optional<BlockPos> optional = Optional.empty();
 
 		for(StructureTemplate.StructureBlockInfo blockInfo : list) {
-			ResourceLocation resourcelocation = ResourceLocation.tryParse(blockInfo.nbt.getString("name"));
+			ResourceLocation resourcelocation = ResourceLocation.tryParse(Objects.requireNonNull(blockInfo.nbt()).getString("name"));
 			if (piece.equals(resourcelocation)) {
-				optional = Optional.of(blockInfo.pos);
+				optional = Optional.of(blockInfo.pos());
 				break;
 			}
 		}
@@ -164,8 +164,8 @@ public class OceanJigsawPlacement {
 
 			jigsawBlockSearch:
 			for(StructureTemplate.StructureBlockInfo jigsawInfo : structurepoolelement.getShuffledJigsawBlocks(this.structureTemplateManager, blockpos, rotation, this.random)) {
-				Direction direction = JigsawBlock.getFrontFacing(jigsawInfo.state);
-				BlockPos blockpos1 = jigsawInfo.pos;
+				Direction direction = JigsawBlock.getFrontFacing(jigsawInfo.state());
+				BlockPos blockpos1 = jigsawInfo.pos();
 				BlockPos blockpos2 = blockpos1.relative(direction);
 				int j = blockpos1.getY() - i;
 				int k = -1;
@@ -211,7 +211,7 @@ public class OceanJigsawPlacement {
 									int l;
 									if (expansion && nextbbox.getYSpan() <= 16) {
 										l = nextJigsawBlocks.stream().mapToInt(blockInfo -> {
-											if (!nextbbox.isInside(blockInfo.pos.relative(JigsawBlock.getFrontFacing(blockInfo.state)))) {
+											if (!nextbbox.isInside(blockInfo.pos().relative(JigsawBlock.getFrontFacing(blockInfo.state())))) {
 												return 0;
 											} else {
 												ResourceKey<StructureTemplatePool> pool2 = readPoolName(blockInfo);
@@ -228,14 +228,14 @@ public class OceanJigsawPlacement {
 
 									for(StructureTemplate.StructureBlockInfo nextJigsawInfo : nextJigsawBlocks) {
 										if (JigsawBlock.canAttach(jigsawInfo, nextJigsawInfo)) {
-											BlockPos blockpos3 = nextJigsawInfo.pos;
+											BlockPos blockpos3 = nextJigsawInfo.pos();
 											BlockPos blockpos4 = blockpos2.subtract(blockpos3);
 											BoundingBox boundingbox2 = nextElement.getBoundingBox(this.structureTemplateManager, blockpos4, rotation1);
 											int i1 = boundingbox2.minY();
 											StructureTemplatePool.Projection nextProjection = nextElement.getProjection();
 											boolean flag2 = nextProjection == StructureTemplatePool.Projection.RIGID;
 											int j1 = blockpos3.getY();
-											int k1 = j - j1 + JigsawBlock.getFrontFacing(jigsawInfo.state).getStepY();
+											int k1 = j - j1 + JigsawBlock.getFrontFacing(jigsawInfo.state()).getStepY();
 											int l1;
 											if (flag && flag2) {
 												l1 = i + k1;
@@ -298,7 +298,7 @@ public class OceanJigsawPlacement {
 		}
 
 		private static ResourceKey<StructureTemplatePool> readPoolName(StructureTemplate.StructureBlockInfo info) {
-			return ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(info.nbt.getString("pool")));
+			return ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(Objects.requireNonNull(info.nbt()).getString("pool")));
 		}
 	}
 }

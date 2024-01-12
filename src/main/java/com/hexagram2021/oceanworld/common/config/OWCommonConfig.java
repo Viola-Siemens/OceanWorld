@@ -33,7 +33,7 @@ public class OWCommonConfig {
 	public static final ForgeConfigSpec.DoubleValue SUPPRESS_MAGICAL_ISLAND;
 
 	static {
-		BUILDER.push("emeraldcraft-common-config");
+		BUILDER.push("oceanworld-common-config");
 			BUILDER.push("biomes-generation");
 				BUILDER.comment("The following values will determine whether the corresponding biomes can be generated ( = true) or not ( = false).");
 				GENERATE_CORAL_OCEAN = BUILDER.define("GENERATE_CORAL_OCEAN", true);

@@ -22,6 +22,7 @@ public class OWContent {
 		ModsLoadedHelper.compatModLoaded();
 
 		OWMultiNoiseBiomeSourceParameterListPresets.init();
+		OWCreativeModeTabs.init(bus);
 
 		OWBlocks.init(bus);
 		OWItems.init(bus);

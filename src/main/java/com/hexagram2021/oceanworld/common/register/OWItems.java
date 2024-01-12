@@ -44,6 +44,12 @@ public class OWItems {
 	public static final ItemEntry<Item> SEA_CUCUMBER = ItemEntry.register(
 			"sea_cucumber", () -> new Item(new Item.Properties().rarity(Rarity.RARE).food(OWFoods.SEA_CUCUMBER))
 	);
+	public static final ItemEntry<Item> OYSTER_MEAT = ItemEntry.register(
+			"oyster_meat", () -> new Item(new Item.Properties().rarity(Rarity.RARE).food(OWFoods.OYSTER_MEAT))
+	);
+	public static final ItemEntry<Item> COOKED_OYSTER_MEAT = ItemEntry.register(
+			"cooked_oyster_meat", () -> new Item(new Item.Properties().rarity(Rarity.RARE).food(OWFoods.COOKED_OYSTER_MEAT))
+	);
 
 	public static final ItemEntry<Item> WHITE_PEARL = ItemEntry.register(
 			"white_pearl", () -> new Item(new Item.Properties().stacksTo(16))
@@ -73,7 +79,10 @@ public class OWItems {
 	);
 
 	public static final ItemEntry<SpawnEggItem> SEA_CUCUMBER_SPAWN_EGG = ItemEntry.register(
-			"sea_cucumber_spawn_egg", () -> new ForgeSpawnEggItem(() -> OWEntities.SEA_CUCUMBER, 0x585227, 0x1B1416, new Item.Properties())
+			"sea_cucumber_spawn_egg", () -> new ForgeSpawnEggItem(() -> OWEntities.SEA_CUCUMBER, 0x585227, 0x1b1416, new Item.Properties())
+	);
+	public static final ItemEntry<SpawnEggItem> OCEANOLOGER_SPAWN_EGG = ItemEntry.register(
+			"oceanologer_spawn_egg", () -> new ForgeSpawnEggItem(() -> OWEntities.OCEANOLOGER, 0x3c3cd0, 0xe02844, new Item.Properties())
 	);
 	public static final ItemEntry<SpawnEggItem> BLACKLIP_OYSTER_SPAWN_EGG = ItemEntry.register(
 			"blacklip_oyster_spawn_egg", () -> new ForgeSpawnEggItem(() -> OWEntities.BLACKLIP_OYSTER, 0x381d4c, 0x8c6e98, new Item.Properties())

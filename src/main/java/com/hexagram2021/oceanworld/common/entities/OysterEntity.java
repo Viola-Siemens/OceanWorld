@@ -11,10 +11,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
@@ -28,15 +31,24 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+import java.util.UUID;
+
 @SuppressWarnings("deprecation")
 public abstract class OysterEntity extends Animal implements Bucketable {
+	private static final UUID OYSTER_ARMOR_MODIFIER_UUID = UUID.fromString("C7A94ED1-297A-3AF1-8F77-8117271B1768");	//uuid3, namespace: oceanworld, content: oyster_armor_modifier
 
+	//TODO: oyster close sound?
+	private static final AttributeModifier OYSTER_ARMOR_MODIFIER = new AttributeModifier(
+			OYSTER_ARMOR_MODIFIER_UUID, "Oyster armor bonus", 4.0, AttributeModifier.Operation.ADDITION
+	);
 	private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(OysterEntity.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Boolean> IS_OPEN = SynchedEntityData.defineId(OysterEntity.class, EntityDataSerializers.BOOLEAN);
 
-	int openShellRemainTicks = 1;
+	int openShellRemainTicks = 20;
 	int closeShellRemainTicks = 0;
 	int productPearlRemainTicks = 56000;
+	boolean availableToProducePearl = false;
 
 	protected OysterEntity(EntityType<? extends Animal> type, Level level) {
 		super(type, level);
@@ -50,33 +62,49 @@ public abstract class OysterEntity extends Animal implements Bucketable {
 	@Override
 	public void aiStep() {
 		super.aiStep();
+		if(this.level().isClientSide) {
+			return;
+		}
 		if (this.isAlive() && this.openShellRemainTicks == 1) {
-			for(Mob mob : this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(0.3D))) {
+			for(Mob mob : this.level().getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(0.3D))) {
 				if (mob.isAlive() && mob != this) {
 					this.touch(mob);
 				}
 			}
 		}
 		if(this.openShellRemainTicks > 0) {
-			if(!this.isOpen()) {
-				this.setOpen(true);
-			}
 			--this.openShellRemainTicks;
 			if(this.openShellRemainTicks <= 0) {
 				this.setOpen(false);
 				this.closeShellRemainTicks = 1200 + this.random.nextInt(120);
+			} else if(!this.isOpen()) {
+				this.setOpen(true);
 			}
 		} else {
 			--this.closeShellRemainTicks;
 			if(this.closeShellRemainTicks <= 0) {
+				this.setOpen(true);
 				this.openShellRemainTicks = 80 + this.random.nextInt(20);
+				if(this.availableToProducePearl) {
+					this.availableToProducePearl = false;
+					this.productPearlRemainTicks = 50000 + this.random.nextInt(6000);
+					this.spawnAtLocation(this.dropPearlItem());
+				}
+			} else if(this.isOpen()) {
+				this.setOpen(false);
 			}
 		}
 
-		--this.productPearlRemainTicks;
-		if(this.productPearlRemainTicks <= 0) {
-			this.productPearlRemainTicks = 50000 + this.random.nextInt(6000);
-			this.spawnAtLocation(this.dropPearlItem());
+		if(!this.availableToProducePearl) {
+			--this.productPearlRemainTicks;
+			if (this.productPearlRemainTicks <= 0) {
+				if (this.isOpen()) {
+					this.productPearlRemainTicks = 50000 + this.random.nextInt(6000);
+					this.spawnAtLocation(this.dropPearlItem());
+				} else {
+					this.availableToProducePearl = true;
+				}
+			}
 		}
 	}
 
@@ -109,6 +137,7 @@ public abstract class OysterEntity extends Animal implements Bucketable {
 		nbt.putInt("OpenRemainTick", this.openShellRemainTicks);
 		nbt.putInt("CloseRemainTick", this.closeShellRemainTicks);
 		nbt.putInt("ProductRemainTick", this.productPearlRemainTicks);
+		nbt.putBoolean("AvailableToProducePearl", this.availableToProducePearl);
 	}
 
 	@Override
@@ -118,6 +147,7 @@ public abstract class OysterEntity extends Animal implements Bucketable {
 		this.openShellRemainTicks = nbt.getInt("OpenRemainTick");
 		this.closeShellRemainTicks = nbt.getInt("CloseRemainTick");
 		this.productPearlRemainTicks = nbt.getInt("ProductRemainTick");
+		this.availableToProducePearl = nbt.getBoolean("AvailableToProducePearl");
 	}
 
 	@Override
@@ -161,6 +191,16 @@ public abstract class OysterEntity extends Animal implements Bucketable {
 
 	private void setOpen(boolean open) {
 		this.entityData.set(IS_OPEN, open);
+		AttributeInstance attributeInstance = Objects.requireNonNull(this.getAttribute(Attributes.ARMOR));
+		if(open) {
+			if(attributeInstance.hasModifier(OYSTER_ARMOR_MODIFIER)) {
+				attributeInstance.removeModifier(OYSTER_ARMOR_MODIFIER);
+			}
+		} else {
+			if(!attributeInstance.hasModifier(OYSTER_ARMOR_MODIFIER)) {
+				attributeInstance.addPermanentModifier(OYSTER_ARMOR_MODIFIER);
+			}
+		}
 	}
 
 	@Override
@@ -189,9 +229,10 @@ public abstract class OysterEntity extends Animal implements Bucketable {
 
 	@Override
 	public boolean hurt(DamageSource damageSource, float value) {
+		this.availableToProducePearl = false;
+		this.productPearlRemainTicks += 100 + this.random.nextInt(100);
 		if(this.isOpen()) {
-			this.openShellRemainTicks = 1;
-			return super.hurt(damageSource, value * 2.0F);
+			this.openShellRemainTicks = 4;
 		}
 		return super.hurt(damageSource, value);
 	}
@@ -263,14 +304,24 @@ public abstract class OysterEntity extends Animal implements Bucketable {
 	@Override
 	protected void dropCustomDeathLoot(DamageSource damageSource, int looting, boolean recentlyHitIn) {
 		super.dropCustomDeathLoot(damageSource, looting, recentlyHitIn);
-		ItemStack itemStack = new ItemStack(this.dropPearlItem(), this.random.nextInt(looting + 1));
-		this.spawnAtLocation(itemStack);
+		int count = this.random.nextInt(looting + 1) + (this.availableToProducePearl ? 1 : 0);
+		if(count > 0) {
+			this.spawnAtLocation(new ItemStack(this.dropPearlItem(), count));
+		}
+	}
+
+	@Override @Nullable
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, @Nullable SpawnGroupData spawnGroupData, @Nullable CompoundTag nbt) {
+		this.setOpen(false);
+		this.closeShellRemainTicks = 1200 + this.random.nextInt(120);
+		this.productPearlRemainTicks = 50000 + this.random.nextInt(6000);
+		return super.finalizeSpawn(level, difficultyInstance, mobSpawnType, spawnGroupData, nbt);
 	}
 
 	protected abstract Item dropPearlItem();
 
 	public static AttributeSupplier.Builder createAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8.0D).add(Attributes.ARMOR, 2.0D).add(Attributes.MOVEMENT_SPEED, 0.0D).add(Attributes.ATTACK_DAMAGE, 2.0D);
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8.0D).add(Attributes.KNOCKBACK_RESISTANCE, 0.5D).add(Attributes.ARMOR, 1.0D).add(Attributes.MOVEMENT_SPEED, 0.0D).add(Attributes.ATTACK_DAMAGE, 2.0D);
 	}
 
 	@SuppressWarnings("unused")

@@ -155,14 +155,14 @@ public class OceanologerEntity extends SpellcasterIllager {
 			if(!super.canUse()) {
 				return false;
 			}
-			return ForgeEventFactory.getMobGriefingEvent(OceanologerEntity.this.level, OceanologerEntity.this);
+			return ForgeEventFactory.getMobGriefingEvent(OceanologerEntity.this.level(), OceanologerEntity.this);
 		}
 
 		private void spellSetBlock(BlockPos blockPos, BlockState blockState, boolean forced) {
-			BlockState defaultBlockState = OceanologerEntity.this.level.getBlockState(blockPos);
+			BlockState defaultBlockState = OceanologerEntity.this.level().getBlockState(blockPos);
 			if(forced) {
 				if(!defaultBlockState.is(BlockTags.FEATURES_CANNOT_REPLACE)) {
-					OceanologerEntity.this.level.setBlock(blockPos, blockState, Block.UPDATE_ALL);
+					OceanologerEntity.this.level().setBlock(blockPos, blockState, Block.UPDATE_ALL);
 				}
 			} else {
 				if(defaultBlockState.is(Blocks.AIR) ||
@@ -171,7 +171,7 @@ public class OceanologerEntity extends SpellcasterIllager {
 						defaultBlockState.is(Blocks.WATER) ||
 						defaultBlockState.is(Blocks.LAVA) ||
 						defaultBlockState.is(Blocks.ICE)) {
-					OceanologerEntity.this.level.setBlock(blockPos, blockState, Block.UPDATE_ALL);
+					OceanologerEntity.this.level().setBlock(blockPos, blockState, Block.UPDATE_ALL);
 				}
 			}
 		}
@@ -201,7 +201,7 @@ public class OceanologerEntity extends SpellcasterIllager {
 			spellSetBlock(aboveBlockPos.above(), OWBlocks.IceDecoration.FAKE_FROSTED_ICE.defaultBlockState(), true);
 
 			List<Boat> list = getNearbyBoats(
-					OceanologerEntity.this.level, OceanologerEntity.this,
+					OceanologerEntity.this.level(), OceanologerEntity.this,
 					OceanologerEntity.this.getBoundingBox().inflate(16.0D, 4.0D, 16.0D)
 			);
 			if (!list.isEmpty()) {
@@ -267,13 +267,13 @@ public class OceanologerEntity extends SpellcasterIllager {
 
 		@Override
 		protected void performSpellCasting() {
-			ServerLevel serverlevel = (ServerLevel)OceanologerEntity.this.level;
+			ServerLevel serverlevel = (ServerLevel)OceanologerEntity.this.level();
 
 			float forceRotateAngle = (OceanologerEntity.this.random.nextInt(2) * 2 - 1) * DripIceEntity.FORCE_ROTATION;
 			for(int i = 0; i < 8; ++i) {
 				BlockPos blockpos = OceanologerEntity.this.blockPosition()
 						.offset(-2 + OceanologerEntity.this.random.nextInt(5), 2, -2 + OceanologerEntity.this.random.nextInt(5));
-				DripIceEntity dripIce = OWEntities.DRIP_ICE.create(OceanologerEntity.this.level);
+				DripIceEntity dripIce = OWEntities.DRIP_ICE.create(OceanologerEntity.this.level());
 				assert dripIce != null;
 				dripIce.moveTo(blockpos, 0.0F, 0.0F);
 				dripIce.shoot(0.0D, 1.0D, 0.0D, 0.8F, 20.0F);
@@ -307,10 +307,10 @@ public class OceanologerEntity extends SpellcasterIllager {
 				return false;
 			} else if (OceanologerEntity.this.tickCount < this.nextAttackTickCount) {
 				return false;
-			} else if (!ForgeEventFactory.getMobGriefingEvent(OceanologerEntity.this.level, OceanologerEntity.this)) {
+			} else if (!ForgeEventFactory.getMobGriefingEvent(OceanologerEntity.this.level(), OceanologerEntity.this)) {
 				return false;
 			} else {
-				List<Sheep> list = OceanologerEntity.this.level.getNearbyEntities(
+				List<Sheep> list = OceanologerEntity.this.level().getNearbyEntities(
 						Sheep.class, this.wololoTargeting, OceanologerEntity.this,
 						OceanologerEntity.this.getBoundingBox().inflate(16.0D, 4.0D, 16.0D)
 				);

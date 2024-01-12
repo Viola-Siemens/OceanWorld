@@ -39,55 +39,56 @@ public class AristocratsResidenceProcessor extends StructureProcessor {
 														StructureTemplate.StructureBlockInfo structureInfo,
 														StructurePlaceSettings settings,
 														@Nullable StructureTemplate template) {
-		RandomSource random = settings.getRandom(structureInfo.pos);
-		BlockState blockstate = structureInfo.state;
+		BlockPos pos = structureInfo.pos();
+		RandomSource random = settings.getRandom(pos);
+		BlockState blockstate = structureInfo.state();
 		if(blockstate.is(Blocks.DIAMOND_BLOCK)) {
 			if(random.nextDouble() > treasurePossibility) {
-				return new StructureTemplate.StructureBlockInfo(structureInfo.pos, OWBlocks.BrickDecoration.RED_CLAY.defaultBlockState(), null);
+				return new StructureTemplate.StructureBlockInfo(pos, OWBlocks.BrickDecoration.RED_CLAY.defaultBlockState(), null);
 			}
 		} else if(random.nextDouble() < replacePossibility) {
 			if (blockstate.is(OWBlocks.BrickDecoration.RED_CLAY.get())) {
 				if (random.nextInt(4) == 2) {
-					return new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WATER.defaultBlockState(), null);
+					return new StructureTemplate.StructureBlockInfo(pos, Blocks.WATER.defaultBlockState(), null);
 				}
 			} else if (blockstate.is(Blocks.WAXED_EXPOSED_COPPER)) {
 				return switch (random.nextInt(5)) {
-					case 0 -> new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WATER.defaultBlockState(), null);
-					case 1 -> new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WAXED_OXIDIZED_COPPER.defaultBlockState(), null);
-					default -> new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WAXED_WEATHERED_COPPER.defaultBlockState(), null);
+					case 0 -> new StructureTemplate.StructureBlockInfo(pos, Blocks.WATER.defaultBlockState(), null);
+					case 1 -> new StructureTemplate.StructureBlockInfo(pos, Blocks.WAXED_OXIDIZED_COPPER.defaultBlockState(), null);
+					default -> new StructureTemplate.StructureBlockInfo(pos, Blocks.WAXED_WEATHERED_COPPER.defaultBlockState(), null);
 				};
 			} else if (blockstate.is(Blocks.WAXED_EXPOSED_CUT_COPPER)) {
 				return switch (random.nextInt(5)) {
-					case 0 -> new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WATER.defaultBlockState(), null);
-					case 1 -> new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WAXED_OXIDIZED_CUT_COPPER.defaultBlockState(), null);
-					default -> new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WAXED_WEATHERED_CUT_COPPER.defaultBlockState(), null);
+					case 0 -> new StructureTemplate.StructureBlockInfo(pos, Blocks.WATER.defaultBlockState(), null);
+					case 1 -> new StructureTemplate.StructureBlockInfo(pos, Blocks.WAXED_OXIDIZED_CUT_COPPER.defaultBlockState(), null);
+					default -> new StructureTemplate.StructureBlockInfo(pos, Blocks.WAXED_WEATHERED_CUT_COPPER.defaultBlockState(), null);
 				};
 			} else if (blockstate.is(Blocks.WAXED_EXPOSED_CUT_COPPER_SLAB)) {
 				return switch (random.nextInt(5)) {
-					case 0 -> new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WATER.defaultBlockState(), null);
-					case 1 -> new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB.defaultBlockState()
+					case 0 -> new StructureTemplate.StructureBlockInfo(pos, Blocks.WATER.defaultBlockState(), null);
+					case 1 -> new StructureTemplate.StructureBlockInfo(pos, Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB.defaultBlockState()
 							.setValue(SlabBlock.TYPE, blockstate.getValue(SlabBlock.TYPE))
 							.setValue(SlabBlock.WATERLOGGED, Boolean.TRUE), null);
-					default -> new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB.defaultBlockState()
+					default -> new StructureTemplate.StructureBlockInfo(pos, Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB.defaultBlockState()
 							.setValue(SlabBlock.TYPE, blockstate.getValue(SlabBlock.TYPE))
 							.setValue(SlabBlock.WATERLOGGED, Boolean.TRUE), null);
 				};
 			} else if (blockstate.is(Blocks.WAXED_EXPOSED_CUT_COPPER_STAIRS)) {
 				return switch (random.nextInt(5)) {
-					case 0 -> new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WATER.defaultBlockState(), null);
-					case 1 -> new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS.defaultBlockState()
+					case 0 -> new StructureTemplate.StructureBlockInfo(pos, Blocks.WATER.defaultBlockState(), null);
+					case 1 -> new StructureTemplate.StructureBlockInfo(pos, Blocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS.defaultBlockState()
 							.setValue(StairBlock.FACING, blockstate.getValue(StairBlock.FACING))
 							.setValue(StairBlock.HALF, blockstate.getValue(StairBlock.HALF))
 							.setValue(StairBlock.SHAPE, blockstate.getValue(StairBlock.SHAPE))
 							.setValue(StairBlock.WATERLOGGED, Boolean.TRUE), null);
-					default -> new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WAXED_WEATHERED_CUT_COPPER_STAIRS.defaultBlockState()
+					default -> new StructureTemplate.StructureBlockInfo(pos, Blocks.WAXED_WEATHERED_CUT_COPPER_STAIRS.defaultBlockState()
 							.setValue(StairBlock.FACING, blockstate.getValue(StairBlock.FACING))
 							.setValue(StairBlock.HALF, blockstate.getValue(StairBlock.HALF))
 							.setValue(StairBlock.SHAPE, blockstate.getValue(StairBlock.SHAPE))
 							.setValue(StairBlock.WATERLOGGED, Boolean.TRUE), null);
 				};
 			} else {
-				return new StructureTemplate.StructureBlockInfo(structureInfo.pos, Blocks.WATER.defaultBlockState(), null);
+				return new StructureTemplate.StructureBlockInfo(pos, Blocks.WATER.defaultBlockState(), null);
 			}
 		}
 
