@@ -1,11 +1,13 @@
 package com.hexagram2021.oceanworld.common;
 
+import com.hexagram2021.oceanworld.common.entities.OceanologerEntity;
 import com.hexagram2021.oceanworld.common.entities.OysterEntity;
 import com.hexagram2021.oceanworld.common.entities.SeaCucumberEntity;
 import com.hexagram2021.oceanworld.common.register.*;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.monster.PatrollingMonster;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -63,5 +65,13 @@ public class OWContent {
 				OysterEntity::checkOysterSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
 		event.register(OWEntities.WHITELIP_OYSTER, SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
 				OysterEntity::checkOysterSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
+	}
+
+	@SubscribeEvent
+	public static void onAttributeCreate(EntityAttributeCreationEvent event) {
+		event.put(OWEntities.SEA_CUCUMBER, SeaCucumberEntity.createAttributes().build());
+		event.put(OWEntities.OCEANOLOGER, OceanologerEntity.createAttributes().build());
+		event.put(OWEntities.BLACKLIP_OYSTER, OysterEntity.createAttributes().build());
+		event.put(OWEntities.WHITELIP_OYSTER, OysterEntity.createAttributes().build());
 	}
 }

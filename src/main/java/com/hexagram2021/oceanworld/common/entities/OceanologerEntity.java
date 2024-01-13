@@ -2,6 +2,7 @@ package com.hexagram2021.oceanworld.common.entities;
 
 import com.google.common.collect.Lists;
 import com.hexagram2021.oceanworld.common.OWSounds;
+import com.hexagram2021.oceanworld.common.entities.goals.RideBoatGoal;
 import com.hexagram2021.oceanworld.common.register.OWBlocks;
 import com.hexagram2021.oceanworld.common.register.OWEntities;
 import net.minecraft.core.BlockPos;
@@ -56,6 +57,7 @@ public class OceanologerEntity extends SpellcasterIllager {
 	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(0, new FloatGoal(this));
+		this.goalSelector.addGoal(0, new RideBoatGoal(this));
 		this.goalSelector.addGoal(1, new OceanologerEntity.CastingSpellGoal());
 		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class, 6.0F, 0.6D, 1.0D));
 		this.goalSelector.addGoal(4, new OceanologerEntity.AttackSpellGoal());
@@ -138,6 +140,12 @@ public class OceanologerEntity extends SpellcasterIllager {
 	public void applyRaidBuffs(int group, boolean raidSpawn) {
 	}
 
+	@Override
+	public void findPatrolTarget() {
+		super.findPatrolTarget();
+		this.setPatrolTarget(this.blockPosition().offset(-64 + this.random.nextInt(128), 0, -64 + this.random.nextInt(128)));
+	}
+
 	class TrapSpellGoal extends SpellcasterIllager.SpellcasterUseSpellGoal {
 
 		@Override
@@ -183,11 +191,11 @@ public class OceanologerEntity extends SpellcasterIllager {
 			BlockPos blockPos = livingentity.blockPosition();
 			BlockPos magmaBlockPos = blockPos.below();
 			BlockPos aboveBlockPos = blockPos.above();
-			spellSetBlock(magmaBlockPos, Blocks.MAGMA_BLOCK.defaultBlockState(), true);
-			spellSetBlock(magmaBlockPos.north(), Blocks.MAGMA_BLOCK.defaultBlockState(), false);
-			spellSetBlock(magmaBlockPos.south(), Blocks.MAGMA_BLOCK.defaultBlockState(), false);
-			spellSetBlock(magmaBlockPos.east(), Blocks.MAGMA_BLOCK.defaultBlockState(), false);
-			spellSetBlock(magmaBlockPos.west(), Blocks.MAGMA_BLOCK.defaultBlockState(), false);
+			spellSetBlock(magmaBlockPos, OWBlocks.IceDecoration.FAKE_FROSTED_ICE.defaultBlockState(), true);
+			spellSetBlock(magmaBlockPos.north(), OWBlocks.IceDecoration.FAKE_FROSTED_ICE.defaultBlockState(), false);
+			spellSetBlock(magmaBlockPos.south(), OWBlocks.IceDecoration.FAKE_FROSTED_ICE.defaultBlockState(), false);
+			spellSetBlock(magmaBlockPos.east(), OWBlocks.IceDecoration.FAKE_FROSTED_ICE.defaultBlockState(), false);
+			spellSetBlock(magmaBlockPos.west(), OWBlocks.IceDecoration.FAKE_FROSTED_ICE.defaultBlockState(), false);
 			spellSetBlock(blockPos, Blocks.BUBBLE_COLUMN.defaultBlockState(), true);
 			spellSetBlock(blockPos.north(), OWBlocks.IceDecoration.FAKE_FROSTED_ICE.defaultBlockState(), false);
 			spellSetBlock(blockPos.south(), OWBlocks.IceDecoration.FAKE_FROSTED_ICE.defaultBlockState(), false);
@@ -212,7 +220,7 @@ public class OceanologerEntity extends SpellcasterIllager {
 		}
 
 		private List<Boat> getNearbyBoats(EntityGetter level, LivingEntity entity, AABB aabb) {
-			List<Boat> list = level.getEntitiesOfClass(Boat.class, aabb, (target) -> true);
+			List<Boat> list = level.getEntitiesOfClass(Boat.class, aabb, target -> entity.getVehicle() != target);
 			List<Boat> list1 = Lists.newArrayList();
 
 			for(Boat boat : list) {

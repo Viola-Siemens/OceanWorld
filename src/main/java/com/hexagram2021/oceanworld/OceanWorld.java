@@ -3,7 +3,11 @@ package com.hexagram2021.oceanworld;
 import com.hexagram2021.oceanworld.common.OWContent;
 import com.hexagram2021.oceanworld.common.OWFoods;
 import com.hexagram2021.oceanworld.common.config.OWCommonConfig;
+import com.hexagram2021.oceanworld.common.register.OWDimensionKeys;
 import com.hexagram2021.oceanworld.common.register.OWItems;
+import com.hexagram2021.oceanworld.common.world.spawners.OWSpawners;
+import com.hexagram2021.oceanworld.common.world.spawners.OceanPatrolSpawner;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -46,6 +50,14 @@ public class OceanWorld {
 	private void setup(final FMLCommonSetupEvent event) {
 		LOGGER.info("Welcome to the ocean world!");
 		OWContent.init();
+		event.enqueueWork(() -> {
+			if(OWCommonConfig.SPAWN_OCEAN_PATROL_OVERWORLD.get()) {
+				OWSpawners.register(Level.OVERWORLD, new OceanPatrolSpawner());
+			}
+			if(OWCommonConfig.SPAWN_OCEAN_PATROL_OCEANWORLD.get()) {
+				OWSpawners.register(OWDimensionKeys.OCEANWORLD, new OceanPatrolSpawner(true));
+			}
+		});
 	}
 
 	private void enqueueIMC(final InterModEnqueueEvent event) {
