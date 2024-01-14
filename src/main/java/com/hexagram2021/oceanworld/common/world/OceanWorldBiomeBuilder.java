@@ -22,8 +22,8 @@ public class OceanWorldBiomeBuilder {
 
 	private static final Climate.Parameter ALL = Climate.Parameter.span(-1.0F, 1.0F);
 
-	private static final Climate.Parameter SURFACE = Climate.Parameter.span(0.0F, 0.375F);
-	private static final Climate.Parameter UNDERGROUND = Climate.Parameter.span(0.375F, 1.0F);
+	private static final Climate.Parameter SURFACE = Climate.Parameter.span(0.0F, 0.35F);
+	private static final Climate.Parameter UNDERGROUND = Climate.Parameter.span(0.35F, 1.0F);
 
 	private static final Climate.Parameter OFF_COAST = Climate.Parameter.span(-1.2F, 0.875F);
 	private static final Climate.Parameter ISLAND = Climate.Parameter.span(0.875F, 1.2F);

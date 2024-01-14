@@ -70,7 +70,7 @@ public class OWCommonConfig {
 			BUILDER.push("custom-spawners");
 				SPAWN_OCEAN_PATROL_OVERWORLD = BUILDER.comment("If true, oceanologers will spawn as patrol on the oceans of overworld.").define("SPAWN_OCEAN_PATROL_OVERWORLD", true);
 				SPAWN_OCEAN_PATROL_OCEANWORLD = BUILDER.comment("If true, oceanologers will spawn as patrol on the oceans of oceanworld.").define("SPAWN_OCEAN_PATROL_OCEANWORLD", true);
-				OCEAN_PATROL_SPAWN_INTERVAL = BUILDER.comment("How many seconds (1 sec = 20 ticks) will ocean patrols spawn again after one try.").defineInRange("OCEAN_PATROL_SPAWN_INTERVAL", 600, 60, 7200);
+				OCEAN_PATROL_SPAWN_INTERVAL = BUILDER.comment("How many seconds (1 sec = 20 ticks) will ocean patrols spawn again after one try.").defineInRange("OCEAN_PATROL_SPAWN_INTERVAL", 600, 60, 72000);
 				OCEAN_PATROL_SPAWN_CHANCE = BUILDER.comment("How likely (0 = never, 100 = always) will a try of spawning ocean patrols success.").defineInRange("OCEAN_PATROL_SPAWN_CHANCE", 20, 1, 100);
 			BUILDER.pop();
 		BUILDER.pop();
