@@ -57,8 +57,8 @@ public class OceanPatrolSpawner implements OceanWorldSpawner {
 					return;
 				}
 
-				int x = (20 + random.nextInt(20)) * (random.nextBoolean() ? -1 : 1);
-				int z = (20 + random.nextInt(20)) * (random.nextBoolean() ? -1 : 1);
+				int x = (32 + random.nextInt(16)) * (random.nextBoolean() ? -1 : 1);
+				int z = (32 + random.nextInt(16)) * (random.nextBoolean() ? -1 : 1);
 				BlockPos.MutableBlockPos spawnPos = player.blockPosition().mutable().move(x, 0, z).setY(serverLevel.getSeaLevel() + 1);
 				if(!serverLevel.hasChunksAt(spawnPos.getX() - 10, spawnPos.getZ() - 10, spawnPos.getX() + 10, spawnPos.getZ() + 10)) {
 					return;
@@ -86,8 +86,8 @@ public class OceanPatrolSpawner implements OceanWorldSpawner {
 						this.spawnPatrolMember(serverLevel, spawnPos, boatType, player, false);
 					}
 
-					spawnPos.setX(spawnPos.getX() + random.nextInt(5) - random.nextInt(5));
-					spawnPos.setZ(spawnPos.getZ() + random.nextInt(5) - random.nextInt(5));
+					spawnPos.setX(spawnPos.getX() + random.nextInt(8) - random.nextInt(8));
+					spawnPos.setZ(spawnPos.getZ() + random.nextInt(8) - random.nextInt(8));
 				}
 				OWLogger.LOGGER.debug("Spawn ocean patrol at %s (%d, %d, %d).".formatted(serverLevel.dimension(), spawnPos.getX(), spawnPos.getY(), spawnPos.getZ()));
 			}
@@ -112,9 +112,9 @@ public class OceanPatrolSpawner implements OceanWorldSpawner {
 		if (oceanologer != null) {
 			if (leader) {
 				oceanologer.setPatrolLeader(true);
+				oceanologer.setPatrolTarget(player.blockPosition());
 			}
 			oceanologer.setPos(blockPos.getX(), blockPos.getY(), blockPos.getZ());
-			oceanologer.setPatrolTarget(player.blockPosition());
 			oceanologer.setTarget(player);
 			oceanologer.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(blockPos), MobSpawnType.PATROL, null, null);
 			boat.setPos(blockPos.getX(), blockPos.getY(), blockPos.getZ());

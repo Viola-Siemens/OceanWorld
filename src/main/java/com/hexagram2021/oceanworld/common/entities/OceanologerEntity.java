@@ -160,10 +160,17 @@ public class OceanologerEntity extends SpellcasterIllager {
 
 		@Override
 		public boolean canUse() {
-			if(!super.canUse()) {
+			LivingEntity target = OceanologerEntity.this.getTarget();
+			if(!super.canUse() || OceanologerEntity.this.isPassenger() || target == null || target.distanceTo(OceanologerEntity.this) >= 16.0D) {
 				return false;
 			}
 			return ForgeEventFactory.getMobGriefingEvent(OceanologerEntity.this.level(), OceanologerEntity.this);
+		}
+
+		@Override
+		public boolean canContinueToUse() {
+			LivingEntity target = OceanologerEntity.this.getTarget();
+			return super.canContinueToUse() && target != null && target.distanceTo(OceanologerEntity.this) < 16.0D;
 		}
 
 		private void spellSetBlock(BlockPos blockPos, BlockState blockState, boolean forced) {
@@ -189,6 +196,7 @@ public class OceanologerEntity extends SpellcasterIllager {
 			LivingEntity livingentity = OceanologerEntity.this.getTarget();
 			assert livingentity != null;
 			BlockPos blockPos = livingentity.blockPosition();
+			livingentity.teleportTo(blockPos.getX() + 0.5D, blockPos.getY(), blockPos.getZ() + 0.5D);
 			BlockPos magmaBlockPos = blockPos.below();
 			BlockPos aboveBlockPos = blockPos.above();
 			spellSetBlock(magmaBlockPos, OWBlocks.IceDecoration.FAKE_FROSTED_ICE.defaultBlockState(), true);
@@ -220,7 +228,7 @@ public class OceanologerEntity extends SpellcasterIllager {
 		}
 
 		private List<Boat> getNearbyBoats(EntityGetter level, LivingEntity entity, AABB aabb) {
-			List<Boat> list = level.getEntitiesOfClass(Boat.class, aabb, target -> entity.getVehicle() != target);
+			List<Boat> list = level.getEntitiesOfClass(Boat.class, aabb, target -> !(target.getFirstPassenger() instanceof OceanologerEntity));
 			List<Boat> list1 = Lists.newArrayList();
 
 			for(Boat boat : list) {
@@ -274,6 +282,18 @@ public class OceanologerEntity extends SpellcasterIllager {
 		}
 
 		@Override
+		public boolean canUse() {
+			LivingEntity target = OceanologerEntity.this.getTarget();
+			return super.canUse() && target != null && target.distanceTo(OceanologerEntity.this) < 20.0D;
+		}
+
+		@Override
+		public boolean canContinueToUse() {
+			LivingEntity target = OceanologerEntity.this.getTarget();
+			return super.canContinueToUse() && target != null && target.distanceTo(OceanologerEntity.this) < 20.0D;
+		}
+
+		@Override
 		protected void performSpellCasting() {
 			ServerLevel serverlevel = (ServerLevel)OceanologerEntity.this.level();
 
@@ -282,12 +302,13 @@ public class OceanologerEntity extends SpellcasterIllager {
 				BlockPos blockpos = OceanologerEntity.this.blockPosition()
 						.offset(-2 + OceanologerEntity.this.random.nextInt(5), 2, -2 + OceanologerEntity.this.random.nextInt(5));
 				DripIceEntity dripIce = OWEntities.DRIP_ICE.create(OceanologerEntity.this.level());
-				assert dripIce != null;
-				dripIce.moveTo(blockpos, 0.0F, 0.0F);
-				dripIce.shoot(0.0D, 1.0D, 0.0D, 0.8F, 20.0F);
-				dripIce.setOwner(OceanologerEntity.this);
-				dripIce.setForceRotateAngle(forceRotateAngle);
-				serverlevel.addFreshEntityWithPassengers(dripIce);
+				if(dripIce != null) {
+					dripIce.moveTo(blockpos, 0.0F, 0.0F);
+					dripIce.shoot(0.0D, 1.0D, 0.0D, 0.8F, 20.0F);
+					dripIce.setOwner(OceanologerEntity.this);
+					dripIce.setForceRotateAngle(forceRotateAngle);
+					serverlevel.addFreshEntityWithPassengers(dripIce);
+				}
 			}
 		}
 

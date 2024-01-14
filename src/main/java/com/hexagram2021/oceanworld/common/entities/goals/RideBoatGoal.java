@@ -65,7 +65,8 @@ public class RideBoatGoal extends Goal {
 			if(Mth.abs(diff) < MAX_ROTATE_DEGREE) {
 				boat.setYRot(targetYRot);
 			} else {
-				boat.setYRot(boat.getYRot() + Mth.sign(diff) * MAX_ROTATE_DEGREE);
+				float newYRot = Mth.wrapDegrees(boat.getYRot() + Mth.sign(diff) * MAX_ROTATE_DEGREE);
+				boat.setYRot(newYRot);
 			}
 			float movementSpeed;
 			if(Mth.abs(diff) > 90.0F) {
