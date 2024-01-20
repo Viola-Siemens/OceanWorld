@@ -257,6 +257,7 @@ public abstract class OysterEntity extends Animal implements Bucketable {
 		nbt.putInt("OpenRemainTick", this.openShellRemainTicks);
 		nbt.putInt("CloseRemainTick", this.closeShellRemainTicks);
 		nbt.putInt("ProductRemainTick", this.productPearlRemainTicks);
+		nbt.putBoolean("AvailableToProducePearl", this.availableToProducePearl);
 	}
 
 	@Override
@@ -274,6 +275,7 @@ public abstract class OysterEntity extends Animal implements Bucketable {
 		if(nbt.contains("ProductRemainTick", Tag.TAG_INT)) {
 			this.productPearlRemainTicks = nbt.getInt("ProductRemainTick");
 		}
+		this.availableToProducePearl = nbt.getBoolean("AvailableToProducePearl");
 	}
 
 	@Override @Nullable
